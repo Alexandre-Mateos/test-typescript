@@ -1,6 +1,6 @@
 import {addSelectedFruitToList, describeChoice} from "./utils";
 import {updateCounter} from "./utils";
-import {Fruit} from "./class/Fruit";
+import {isADuplicate} from "./utils";
 
 let addButton: HTMLButtonElement | null = document.querySelector("#addBtn");
 let selectInput: HTMLSelectElement | null = document.querySelector("#fruitSelect");
@@ -12,7 +12,11 @@ if (addButton) {
     addButton.addEventListener('click', () => {
         if (selectInput && fruitList && counter) {
             let selectedFruit: string = selectInput.value;
-            addSelectedFruitToList(selectedFruit, fruitList);
+
+            if (!isADuplicate(selectedFruit)) {
+                addSelectedFruitToList(selectedFruit, fruitList, counter);
+            }
+
             updateCounter(counter);
             describeChoice(selectedFruit);
         }
