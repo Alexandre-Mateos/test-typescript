@@ -1,3 +1,1 @@
-import { greet } from "./utils";
-
-console.log(greet("Alex"));
+import "./script";

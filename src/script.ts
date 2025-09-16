@@ -1,0 +1,20 @@
+import {addSelectedFruitToList, describeChoice} from "./utils";
+import {updateCounter} from "./utils";
+import {Fruit} from "./class/Fruit";
+
+let addButton: HTMLButtonElement | null = document.querySelector("#addBtn");
+let selectInput: HTMLSelectElement | null = document.querySelector("#fruitSelect");
+let fruitList: HTMLUListElement | null = document.querySelector("#fruitList");
+let counter: HTMLParagraphElement | null = document.querySelector("#counter");
+
+
+if (addButton) {
+    addButton.addEventListener('click', () => {
+        if (selectInput && fruitList && counter) {
+            let selectedFruit: string = selectInput.value;
+            addSelectedFruitToList(selectedFruit, fruitList);
+            updateCounter(counter);
+            describeChoice(selectedFruit);
+        }
+    })
+}
