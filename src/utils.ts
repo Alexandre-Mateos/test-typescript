@@ -5,7 +5,7 @@ export function addSelectedFruitToList(selectedFruit: string, fruitList: HTMLULi
     let fruitItemList: HTMLLIElement = document.createElement('li');
     let fruitItemPara: HTMLParagraphElement = document.createElement('p');
     let removeButton: HTMLButtonElement = document.createElement('button');
-    removeButton.innerHTML = 'remove';
+    removeButton.innerHTML = 'X';
     removeButton.classList.add('remove');
     fruitItemPara.innerHTML = selectedFruit;
     fruitItemPara.classList.add('fruitItem');
@@ -17,13 +17,15 @@ export function addSelectedFruitToList(selectedFruit: string, fruitList: HTMLULi
         fruitItemList.remove();
         updateCounter(counter);
     })
+    updateCounter(counter);
 }
 
-export function updateCounter(counter: HTMLParagraphElement): void
+function updateCounter(counter: HTMLParagraphElement): void
 {
     // Not optimal for performances but necessary to be sure to have an up-to-date list of addedFruits
     // Pass addedFruits in function parameters may cause to use a list not up-to-date,
     // and so a gap of 1 in in the counter
+
     let addedFruits: NodeListOf<HTMLParagraphElement> | null = document.querySelectorAll(".fruitItem");
     counter.innerHTML = "Total : " + addedFruits.length + " fruit(s)";
 }
